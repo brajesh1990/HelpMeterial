@@ -1,0 +1,5 @@
+Delegates are reference types that hold references to methods. 
+You can use delegates to store references to methods and invoke them later.
+
+
+

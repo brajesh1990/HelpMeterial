@@ -1,0 +1,151 @@
+Repo
+
+  public Response SaveLicenseMandiMapping(LicenseMandiMappingCustomModel model)
+        {
+            var service = new ModelXmlSerializerService();
+            var xml = service.GetXml(model);
+
+           
+
+            using (response = new Response())
+            {
+                object objMandiBranchResult = new object();
+                using (dbcontext = new MandiManagementEntities())
+                {
+                    SqlConnection connectionString = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlconnectionString"].ConnectionString);
+                    using (SqlConnection conn = new SqlConnection(connectionString.ConnectionString))
+                    {
+                        using (SqlCommand cmd = new SqlCommand())
+                        {
+                            try
+                            {
+                                var mandiID = string.Join(",", model.SelectedMandis.Select(x => x.MandiId).ToList());
+
+                                DataSet ds = new DataSet();
+                                DataTable dt = new DataTable();
+                                cmd.CommandText = "Pro_SaveLicenseMandiMapping";
+                                cmd.Connection = conn;
+                                cmd.CommandType = CommandType.StoredProcedure;
+
+                                cmd.Parameters.Add("@BranchId", SqlDbType.Int).Value = model.BranchId;
+                                cmd.Parameters.Add("@LicenseId", SqlDbType.Int).Value = model.LicenseId;
+                                cmd.Parameters.Add("@BranchMandi", SqlDbType.NVarChar).Value = mandiID.ToString();
+                                conn.Open();
+                                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                                adapter.Fill(ds);
+                                response.responseData = ds.Tables[0].AsEnumerable().Select(r => r.Table.Columns.Cast<DataColumn>().Select(c => new KeyValuePair<string, object>(c.ColumnName, r[c.Ordinal])
+                                    ).ToDictionary(z => z.Key, z => z.Value)).FirstOrDefault();
+
+
+                                response.success = true;
+                                conn.Close();
+
+
+
+                                if (model.SelectedMandis != null)
+                    {
+
+                       
+
+ 
+
+                       
+
+                        objMandiBranchResult = true;
+                    }
+                    else
+                        objMandiBranchResult = false;
+                            }
+                            catch (Exception e)
+                            {
+                                conn.Close();
+                                throw;
+                            }
+                        }
+                    }
+                    return response;
+
+
+
+                }
+
+            }
+
+        }
+====================
+create  PROC Pro_SaveLicenseMandiMapping 
+ @BranchId int,  
+ @LicenseId int ,
+ @BranchMandi nvarchar(max)
+AS
+ 
+ BEGIN
+     BEGIN TRY
+   BEGIN TRANSACTION 
+------------------------------- THis deletes the Associated Mandi in this Branch ----------------------------------
+ Delete B from LicenseMandiMapping B inner join MandiMaster M on b.MandiId = M.MandiId 
+ and b.LicenseId=@LicenseId   and  B.MandiId NOT IN(select value from dbo.Split(@BranchMandi,','))
+-------------------------------- Insert Mandi Not associated with branch  -----------------------------------------------------------------
+   insert into LicenseMandiMapping(LicenseId,MandiId,IsActive,IsDeleted) 
+   select @LicenseId, value 'MandiID',1,0 from dbo.Split(@BranchMandi,',') WHERE  value NOT IN(Select MandiId from LicenseMandiMapping Where @LicenseId=@LicenseId)
+ COMMIT
+ select 1 'Success'
+END TRY
+BEGIN CATCH
+    IF @@TRANCOUNT > 0
+        ROLLBACK
+  select 0 'Success'
+  END CATCH
+    END
+
+=================XML Throgh List Update============
+
+create PROC Pro_SaveLicenseMandiMapping_test
+@Dataxml XML
+AS
+declare @Result nvarchar(200);
+SET NOCOUNT ON;
+BEGIN
+DECLARE @IsDoc INT;
+EXEC [sys].[sp_xml_preparedocument] @IsDoc OUTPUT,@Dataxml;
+DECLARE @LicenseId INT; SET @LicenseId = @Dataxml.value('(LicenseMandiMappingCustomModel/LicenseId)[1]', 'INT'); DECLARE @MandiId INT;
+SET @MandiId = @Dataxml.value('(LicenseMandiMappingCustomModel/MandiId)[1]', 'INT');
+DECLARE @IsCheckRecord int;
+set @IsCheckRecord = (select LicenseId from LicenseMandiMapping where LicenseId=@LicenseId and MandiId = @MandiId and IsActive=1 and IsDeleted=0);
+update LicenseMandiMapping set IsActive =0, IsDeleted = 1  where LicenseId=@LicenseId  and IsActive=1 and IsDeleted=0;
+BEGIN TRY
+IF(ISNULL(@IsCheckRecord,0)=0)
+BEGIN
+SELECT LicenseId, MandiId, IsActive,IsDeleted
+INTO #tempTransition
+FROM OPENXML(@IsDoc,'/LicenseMandiMappingCustomModel',2)WITH(LicenseId int, MandiId int,        IsActive bit,    IsDeleted bit);   
+INSERT INTO LicenseMandiMapping
+select LicenseId,MandiId,1,0 FROM #tempTransition
+set @Result ='Sucess'
+END
+ELSE
+BEGIN
+set @Result ='Record All Ready Exist!!'
+END
+END TRY
+  BEGIN CATCH
+  IF (XACT_STATE()) = -1
+  set @Result='Fail'
+  IF (XACT_STATE()) = 1
+  INSERT INTO DB_Form_Errors VALUES (SUSER_SNAME(),                          
+  ERROR_NUMBER(),
+  ERROR_STATE(),
+  ERROR_SEVERITY(),
+  ERROR_LINE(),
+  ERROR_PROCEDURE(),
+  ERROR_MESSAGE(),
+  'Pro_SaveLicenseMandiMapping', GETDATE())
+  set @Result='Fail'
+  End Catch;   
+ SET NOCOUNT OFF;
+exec sp_xml_removedocument @IsDoc
+select @Result as Result;   
+ END
+
+
+

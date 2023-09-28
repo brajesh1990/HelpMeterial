@@ -1,0 +1,32 @@
+select * from edumiss.assetType
+order by assetTypeId
+OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY
+FOR JSON AUTO, INCLUDE_NULL_VALUES
+
+===================
+declare @json nvarchar(max)='[{"assetTypeId":1,"assetTypeName":"Asset","parentAssetTypeId":0,"childAssetTypeId":0,"leafNodeFlag":0,"CREATED_BY":null,"CREATED_ON":null,"MODIFIEDBY":null,"LASTMODIFIED":null,"DELETED":0,"inRegisterFlag":0}]';
+
+insert into EDUMISS.assetType
+select [assetTypeName],
+	[parentAssetTypeId],
+	[childAssetTypeId],
+	[leafNodeFlag],
+	[CREATED_BY],
+	[CREATED_ON],
+	[MODIFIEDBY],
+	[LASTMODIFIED],
+	[DELETED],
+	[inRegisterFlag] from openjson(@json)with(
+	[assetTypeName] [nvarchar](255),
+	[parentAssetTypeId] [bigint],
+	[childAssetTypeId] [bigint],
+	[leafNodeFlag] [smallint],
+	[CREATED_BY] [nvarchar](255),
+	[CREATED_ON] [datetime2](0),
+	[MODIFIEDBY] [nvarchar](255),
+	[LASTMODIFIED] [datetime2](0),
+	[DELETED] [smallint],
+	[inRegisterFlag] [smallint]
+)
+=================================
+

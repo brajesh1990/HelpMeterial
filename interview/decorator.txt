@@ -1,0 +1,42 @@
+
+decorator: decorator are used to change the behaviour of class, method, properity and parameter without changing its source code
+directive: directive is used to change the behaviour of html dom without changing its source code.
+
+
+Type of decorator
+
+class decorator
+1. class decorator
+2. property decorator
+----------
+1. class decoratator
+2. method decoarator
+3. properity decorator
+4. parameter decorator
+
+==========
+1. structure
+2. attribute
+3. component
+
+========================
+
+
+8 + 5 × 2 = ?
+
+B BRACKET
+O ORDER OF POWERS OR ROOTS
+D DIVIDE
+M MULTIPLICATION
+A ADDITION
+S SUBSTRACTION
+----------
+	Advocate //divya@freelaw.in
+	Data Entry Operator //abc@gmail.com
+	Admin //
+	Legal Researcher //demot540@gmail.com
+	
+	
+	
+
+erponeschool.weexcel.demo.com

@@ -1,0 +1,26 @@
+1. Property is fundamental concept in OOPs of encapsulation that allows you to control access to the data stored within a class. 
+2. It similar to variable but they are access using getter and setter method.
+3. Using the setter and getter method we can define a controlled way to read, write, enforce the logic and validate of the property value
+
+example---
+private int age;
+
+    // Property to get and set the age
+    public int Age
+    {
+        get
+        {
+            return age;
+        }
+        set
+        {
+            if (value >= 0 && value <= 120)
+            {
+                age = value;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("Age must be between 0 and 120.");
+            }
+        }
+    }

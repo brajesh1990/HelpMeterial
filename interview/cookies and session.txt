@@ -1,0 +1,9 @@
+cookies are used to store small amounts of data on the client side,
+
+while sessions are used to manage and store larger amounts of data on the server side.
+
+---type of cokies
+Lifespan: Cookies can have different lifetimes:
+
+Session Cookies: These are temporary and are deleted when the browser is closed.
+Persistent Cookies: These have an expiration date and are stored on the user's device until they expire or are manually deleted.

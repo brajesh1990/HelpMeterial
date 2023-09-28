@@ -1,0 +1,11 @@
+In ASP.NET Core, IActionResult is an interface that represents the result of an action method in a controller.
+An action method is a C# method that handles HTTP requests and returns a response to the client. IActionResult is a flexible and powerful way to return different types of HTTP responses, such as HTML pages, JSON data, redirects, or status codes, from your controller actions.
+
+
+
+
+
+
+
+
+

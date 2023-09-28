@@ -1,0 +1,15 @@
+https://www.interviewbit.com/asp-net-interview-questions/
+https://anywhere.epam.com/en/blog/advanced-asp-net-core-interview-questions-answers
+https://dotnettutorials.net/lesson/microservices-using-asp-net-core/
+https://unstop.com/blog/dot-net-core-interview-questions-and-answers
+https://www.hackertrail.com/talent/backend/net-core-interview-questions-answers/
+
+microcervices
+https://www.c-sharpcorner.com/blogs/api-gateway-in-net-60-using-ocelot
+
+
+
+
+
+
+-------

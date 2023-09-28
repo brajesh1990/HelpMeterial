@@ -1,0 +1,8 @@
+********encapsulation*****
+Encapsulation is a way to restrict the direct access to some components of an object, so users cannot access state values for all of the variables of a particular object. Encapsulation can be used to hide both data members and data functions or methods associated with an instantiated class or object.
+
+Benifit of encapsulation
+Hiding data: Users will have no idea how classes are being implemented or stored. All that users will know is that values are being passed and initialized.
+More flexibility: Enables you to set variables as red or write-only. Examples include: setName(), setAge() or to set variables as write-only then you only need to omit the get methods like getName(), getAge() etc.
+Easy to reuse: With encapsulation, it's easy to change and adapt to new requirements
+Inheritance vs. abstraction

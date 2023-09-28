@@ -1,0 +1,8 @@
+C:\Arvind\interview\Practice\DeligateExamp\DeligateExamp\bin\Debug\DeligateExamp.exe.config
+C:\Arvind\interview\Practice\DeligateExamp\DeligateExamp\bin\Debug\DeligateExamp.exe
+C:\Arvind\interview\Practice\DeligateExamp\DeligateExamp\bin\Debug\DeligateExamp.pdb
+C:\Arvind\interview\Practice\DeligateExamp\DeligateExamp\obj\Debug\DeligateExamp.csproj.AssemblyReference.cache
+C:\Arvind\interview\Practice\DeligateExamp\DeligateExamp\obj\Debug\DeligateExamp.csproj.SuggestedBindingRedirects.cache
+C:\Arvind\interview\Practice\DeligateExamp\DeligateExamp\obj\Debug\DeligateExamp.csproj.CoreCompileInputs.cache
+C:\Arvind\interview\Practice\DeligateExamp\DeligateExamp\obj\Debug\DeligateExamp.exe
+C:\Arvind\interview\Practice\DeligateExamp\DeligateExamp\obj\Debug\DeligateExamp.pdb

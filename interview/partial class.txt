@@ -1,0 +1,8 @@
+
+--partial class
+
+Actualy Large class can be difficult to manage and navigate. By splitting a class into partials, improving the readability of code.
+At the compile time all these partial class merge into a single class. 
+
+--partial method
+

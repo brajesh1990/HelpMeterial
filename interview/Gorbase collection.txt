@@ -1,0 +1,40 @@
+
+https://referbruv.com/blog/garbage-collection-in-net-core-explained-concepts-and-best-practices/#google_vignette
+
+Garbage collection is responsible for memory allocation and management.
+
+
+https://www.qfles.com/interview-question/microservices-interview-questions
+micro services
+
+
+ASP.NET Core is an 
+
+open-source, 
+cross-platform and 
+high performance 
+
+
+platform
+
+
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

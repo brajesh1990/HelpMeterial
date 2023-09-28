@@ -1,0 +1,10 @@
+Filters are the attribute that allows us to inject some logic or code which is going to be executed either before or after an action method is invoked.
+
+1. Authentication Filter (Introduced in MVC 5)
+2. Authorization Filter
+3. Action Filter
+4. Result Filter
+5. Exception Filter
+
+different between middleware and filter
+Middleware can be used for the entire request pipeline but Filters is only used within the Routing Middleware where we have an MVC pipeline so Middleware operates at the level of ASP.NET Core but Filters executes only when requests come to the MVC pipeline.

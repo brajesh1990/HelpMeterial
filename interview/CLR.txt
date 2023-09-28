@@ -1,0 +1,25 @@
+
+CLI : command line interface
+CLR(Common Language Runtime): 
+1. CLR stands for Common Language Runtime. It is responsible for the execution and running of programs.
+2. The Common Language Runtime (CLR) performs the garbage collection and code compilation functions etc.
+
+MSIL(Microsoft Intermediate Language) 
+CIL(Common Intermediate Language)
+IL(Intermediate Language)
+CTS (Common Type System)
+ 
+ 
+
+
+The CLR is the execution/ run-time engine in .NET Core, 
+that is, it is responsible for the execution and running of programs in different programming languages. 
+It consists of the following major components:
+
+Garbage collector
+JIT compiler
+Low-level classes
+Primitive data types.
+CLS and CTS
+The Common Language Runtime (CLR) performs the garbage collection and code compilation functions etc.
+

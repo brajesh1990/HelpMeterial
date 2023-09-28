@@ -1,0 +1,81 @@
+***********Indexer***********
+
+Indexer is same as the property, but the only difference is, properity is work for primitive data type like int, string, float etc whenever indexer is work for array, list etc. So Indexer is a special type of property, and that allows instances of a class or structure to be indexed same like an array.
+
+If we define an indexer for a class, then that class will behave like a virtual array, and we can access that class instance values without specifying a type or instance member using an array access operator ([]).
+
+example--
+
+ class Users
+    {
+       // Declare an array
+       private string[] arr = new string[3];
+       // Define the indexer
+       public string this[int i]
+       {
+          get { return arr[i]; }
+          set { arr[i] = value; }
+       }
+    }
+    class Program
+    {
+       static void Main(string[] args)
+       {
+          Users ulist = new Users();
+          ulist[0] = "Suresh Dasari";
+          ulist[1] = "Rohini Alavala";
+          ulist[2] = "Trishika Dasari";
+          for (int i = 0; i < 3; i++)
+          {
+             Console.WriteLine(ulist[i]);
+          }
+          Console.ReadLine();
+       }
+    }
+
+
+===============generic iindexer
+
+using System;
+using System.Collections.Generic;
+
+class MyListWrapper<T>
+{
+    private List<T> internalList = new List<T>();
+
+    // Indexer declaration
+    public T this[int index]
+    {
+        get
+        {
+            if (index < 0 || index >= internalList.Count)
+                throw new IndexOutOfRangeException();
+            return internalList[index];
+        }
+        set
+        {
+            if (index < 0 || index >= internalList.Count)
+                throw new IndexOutOfRangeException();
+            internalList[index] = value;
+        }
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        MyListWrapper<string> myList = new MyListWrapper<string>();
+
+        myList[0] = "Hello";
+        myList[1] = "World";
+
+        Console.WriteLine(myList[0]); // Output: Hello
+        Console.WriteLine(myList[1]); // Output: World
+    }
+}
+
+
+
+
+	

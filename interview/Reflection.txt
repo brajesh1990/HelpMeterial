@@ -1,0 +1,7 @@
+********Reflection*****
+
+1. Reflection is useful to get the type information that describes assemblies, modules, members, parameters, and other entities in the managed code by examining their metadata.
+2. By reflection, we can create type instances dynamically at runtime, bind or get the type from an existing object and invoke its methods or access its fields and properties.
+3. It provides access to perform late binding and get methods type information created at runtime.
+
+Example: 

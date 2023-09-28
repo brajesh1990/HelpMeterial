@@ -1,0 +1,83 @@
+(1): Immutability vs. Mutability:
+
+String: string is immutable, which means the string object cannot be modified once it is created. Any operation that seems to modify a string actually creates a new string in memory. This can lead to inefficiencies when performing multiple string manipulation operations, as it generates a lot of temporary objects.
+
+StringBuilder: StringBuilder is designed to handle mutable sequences of characters. It allows you to modify the content of the string without creating new objects. This makes it more efficient when performing multiple concatenations or modifications to a string
+
+(2): split:  Split method is used to split a string into substrings based on the array's characters
+example: 
+ 1. string msg = "Suresh,Rohini,Trishika";
+           string[] strarr = msg.Split(',');
+           for (int i = 0; i < strarr.Length; i++)
+           {
+               Console.WriteLine(strarr[i]);
+           }
+---for multiple Delimiters(separater)
+2. string[] strarr = msg.Split(new char[] { ',', '-', '%' }, StringSplitOptions.RemoveEmptyEntries);
+
+(3): Replace : Replace method is used to replace a specified string or a character in all occurrences of the given string
+
+     example: string msg = "Hi Guest Hi";
+             string nmsg = msg.Replace("Hi", "Welcome");
+(4): Concat Method:  Concat method is used to concatenate or append one string to the end of another string and return a new string
+     example string msg1 = "Welcome to";
+             string msg2 = " " + "tutlane";
+ string result = string.Concat(msg1, msg2);
+
+(5): Contains Method: Contains method is used to check whatever the specified substring exists in the given string or not, and 
+     it will return a boolean value.
+      example: string msg = "Welcome to Tutlane";
+      bool isExist=msg.Contains("Welcome"); //true
+
+(6): Contains Case Insensitive: To perform a case-insensitive string comparison, you need to use the string IndexOf method.
+   example: string msg = "Welcome to Tutlane";
+  StringComparison comp = StringComparison.OrdinalIgnoreCase;
+      bool isExist=msg.IndexOf("Welcome",comp); //true
+
+(7): Substring: Substring method is used to get a substring from the given string
+		example:       string msg = "Welcome to Tutlane";
+		string result=msg.Substring(3);
+		string result=msg.Substring(3, 7);
+
+(8): Compare: Compare method is used to compare two specified strings and return an integer value that indicates their relative position in the sort order
+       https://www.c-sharpcorner.com/UploadFile/mahesh/compare-strings-in-C-Sharp/
+
+
+
+(9): Remove: the string Remove method is used to delete characters in the string starting from the specified 
+            position and continuing to the end of the string
+string msg = "Welcome to Tutlane";
+string result=msg.Remove(5); //Welco
+string result=msg.Remove(3,7); //Wel Tutlane
+
+
+(10): Join: Join method is used to concatenate all the elements of the string array using a specified separator between each element.
+      example: string[] sArr = { "Welcome", "to", "Tutlane" };
+               string result=string.Join(", ", sArr); 
+
+
+(11): String IndexOf Method:IndexOf method is useful to return an index of the first occurrence of the specified character in the given string
+             example:
+ 
+             string name = "Suresh Dasari";
+             Console.WriteLine("Character s Index Position: {0}", name.IndexOf("s"));
+             Console.WriteLine("Ignore Case: {0}", name.IndexOf("s", StringComparison.OrdinalIgnoreCase));
+             Console.WriteLine("Change Search Start Position: {0}", name.IndexOf("s", 5));
+             Console.WriteLine("Characters Length Reult: {0}", name.IndexOf("s", 5, 3));
+             Console.WriteLine("String Position: {0}", name.IndexOf("Dasa"));
+             Console.WriteLine("\nPress Enter Key to Exit..");
+             Console.ReadLine();
+         }
+
+
+
+
+==========program
+string name = "Brajesh Kumar";
+
+            string[] data =  name.Split(' ');
+             Array.Reverse(data);
+             Console.WriteLine(string.Join(" ", data));
+            Console.ReadLine();
+
+
